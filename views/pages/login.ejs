@@ -38,8 +38,8 @@
 							</div>
 							<form action="/login" class="signin-form" method="POST">
 								<div class="form-group mt-3">
-									<input type="text" class="form-control" name="username" required>
-									<label class="form-control-placeholder" for="username">Username</label>
+									<input type="text" class="form-control" name="email" required>
+									<label class="form-control-placeholder" for="username">Email</label>
 								</div>
 								<div class="form-group">
 									<input id="password-field" type="password" class="form-control" name="password"
@@ -78,16 +78,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.25.0/axios.min.js"
         integrity="sha512-/Q6t3CASm04EliI1QyIDAA/nDo9R8FQ/BULoUFyN4n/BDdyIxeH7u++Z+eobdmr11gG5D/6nPFyDlnisDwhpYA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script>
-	function LoginUser() {
-		axios.post('/login', {
-			userName: '',
-			password: ''
-		}).then(({ data }) => {
-			console.log(data)
-		}).catch(err => {
-			alert(err.toString())
-		})
-	}
-</script>

@@ -1,4 +1,3 @@
-
 const LocalStrategy = require("passport-local").Strategy;
 const USER = require('../models/userSchema')
 
@@ -18,14 +17,20 @@ module.exports = (passport) => {
         })
     })
 
-    passport.use(new LocalStrategy(
+    passport.use(new LocalStrategy({
+            usernameField: 'email'
+        },
         async function (username, password, done) {
-            console.log(username, password)
-            USER.findOne({ username: username }, function (err, user) {
-                console.log(user)
-                if (err) { return done(err); }
-                if (!user) { return done(null, false), { Message: "incorrect username." } }
-                if (user.password !== password) { return done(null, false), { Message: "incorrect password" } }
+            USER.findOne({email: username}, function (err, user) {
+                if (err) {
+                    return done(err);
+                }
+                if (!user) {
+                    return done(null, false, {type:"error",message:"incorrect username"})
+                }
+                if (user.password !== password) {
+                    return done(null, false, {type:"error",message:"incorrect password"})
+                }
                 return done(null, user);
             });
         }
