@@ -2,19 +2,20 @@
   "name": "passport-authentication",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon app.js"
   },
   "author": "Axit",
   "license": "MIT",
   "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
-    "express-flash": "^0.0.2",
     "express-session": "^1.17.2",
     "mongoose": "^6.2.0",
     "nodemon": "^2.0.15",
